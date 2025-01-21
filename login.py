@@ -85,7 +85,7 @@ class DataBase:
                     col2.text(f"LinkedIn URL: {data['linkedin_url']}")
                     col2.text(f"Purpose of Visiting: {data['purpose']}")
             else:
-                st.warning("You Not Yet Registered.\nRegister First")
+                st.warning("You Not Yet Registered or you may selected just for fun purpose..\nRegister First")
 
         with tab3:
             filters = {"purpose": self.purpose, "company": self.company, "name": self.name, "designation": self.designation, "linkedin_url": self.linkedin_url}
