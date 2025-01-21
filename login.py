@@ -115,7 +115,7 @@ class DataBase:
                         success = self.update_schedule(data["_id"], schedule_type, date, start_time, end_time, location, google_map_link, company_photo_binary)
                         if success:
                             col2.success("Schedule confirmed. I will contact you on the date and time you specified.")
-                            st.link_button("View My Resume","/main.py",use_container_width=True,type='primary')
+                            st.link_button("View My Resume","https://portfolio-8v3izzmnuu7wjyypvxybpk-vur.streamlit.app/",use_container_width=True,type='primary')
             else:
                 st.info("You not yet registered.\nRegister First")
 
