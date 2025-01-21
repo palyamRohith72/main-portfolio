@@ -113,6 +113,6 @@ class DataBase:
                             col2.success("Schedule confirmed. I will contact you on the date and time you specified.")
                             st.link_button("View My Resume","https://portfolio-8v3izzmnuu7wjyypvxybpk-vur.streamlit.app/",use_container_width=True,type='primary')
             else:
-                st.info("You not yet registered.\nRegister First")
+                st.info("You not yet registered or selected just for fun as a purpose.\nRegister First or just change the purpose to intervieews or job purpose")
 
 DataBase().display()
