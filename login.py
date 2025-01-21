@@ -79,7 +79,6 @@ class DataBase:
                     col1, col2 = st.columns([1, 2], gap='small',border=True)
                     col1.image(data["photo"])
                     col2.text(f"Name: {data['name']}")
-                    col2.text(f"Phone Number : {data['phone number']}")
                     col2.text(f"Designation: {data['designation']}")
                     col2.text(f"Company: {data['company']}")
                     col2.text(f"LinkedIn URL: {data['linkedin_url']}")
