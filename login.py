@@ -14,14 +14,15 @@ class DataBase:
     def __del__(self):
         self.client.close()
 
-    def add_info(self, purpose, company, name, designation, linkedin_url, photo):
+    def add_info(self, purpose, company, name, designation, linkedin_url, photo,phoneNumber):
         result = self.collection.insert_one({
             "purpose": purpose,
             "company": company,
             "name": name,
             "designation": designation,
             "linkedin_url": linkedin_url,
-            "photo": Binary(photo.getvalue())
+            "photo": Binary(photo.getvalue()),
+            "phone number":phoneNumber
         })
         return result.acknowledged
 
@@ -51,23 +52,17 @@ class DataBase:
             col1,col2=st.columns([1,2],border=True)
             with col2:
                 self.purpose = st.selectbox("Please specify the purpose of viewing my portfolio", ["Just for fun", "For Providing An Internship", "For Providing Job Opportunity"])
-                if self.purpose == "For Providing An Internship":
-                    if "internship" not in st.session_state:
-                        st.session_state["internship"] = None
-                if self.purpose == "For Providing Job Opportunity":
-                    if "job" not in st.session_state:
-                        st.session_state['job'] = None
-    
                 self.company = st.text_input("In Which Company Do You Work")
                 self.name = st.text_input("Your Name")
                 self.designation = st.text_input("Enter Your Designation In Company")
                 self.linkedin_url = st.text_input("Enter Your LinkedIn URL")
+                self.phoneNumber=st.text_input("Enter your phone number")
     
                 if self.purpose and self.company and self.name and self.designation and self.linkedin_url:
                     self.photo = st.camera_input("Please Share Your Photo")
                     if self.photo:
                         if st.button("Take this information", use_container_width=True, type='primary'):
-                            success = self.add_info(self.purpose, self.company, self.name, self.designation, self.linkedin_url, self.photo)
+                            success = self.add_info(self.purpose, self.company, self.name, self.designation, self.linkedin_url, self.photo,self.phoneNumber)
                             if success:
                                 st.success("Added your data. You can view it in the 'Your Data Is Displayed Here' tab.")
             with col1:
@@ -84,6 +79,7 @@ class DataBase:
                     col1, col2 = st.columns([1, 2], gap='small',border=True)
                     col1.image(data["photo"])
                     col2.text(f"Name: {data['name']}")
+                    col2.text(f"Phone Number : {data['phone number']}")
                     col2.text(f"Designation: {data['designation']}")
                     col2.text(f"Company: {data['company']}")
                     col2.text(f"LinkedIn URL: {data['linkedin_url']}")
