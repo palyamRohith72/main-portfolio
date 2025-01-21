@@ -65,7 +65,7 @@ class DataBase:
                             success = self.add_info(self.purpose, self.company, self.name, self.designation, self.linkedin_url, self.photo,self.phoneNumber)
                             if success:
                                 st.success("Added your data. You can view it in the 'Your Data Is Displayed Here' tab.")
-                                col2.link_button("View My Resume","https://portfolio-8v3izzmnuu7wjyypvxybpk-vur.streamlit.app/",use_container_width=True,type='primary',key='unique button')
+                                col2.link_button("View my resume","https://portfolio-8v3izzmnuu7wjyypvxybpk-vur.streamlit.app/",use_container_width=True,type='primary')
             with col1:
                 style_metric_cards()
                 st.metric("Total Views",value= self.collection.count_documents({}))
